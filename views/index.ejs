@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Page</title>
+  <link rel="stylesheet" href="./styles/index.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: poppins, 'Courier New', Courier, monospace;
+      font-size: 1.1em;
+    }
+    body{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .search_block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 50%;
+      padding: 3em;
+    }
+    
+    .result_block {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-gap: .3em;
+      align-items: center;
+      background-color: rgb(203, 242, 255);
+      color: dark-gray;
+      padding-inline: 3em;
+      height: 100vh;
+      width: 50%;
+      padding: 3em;
+      font-size: 1.16em;
+    }
+
+    .sinput{
+      max-width: 80%;
+      min-width: 80%;
+      padding: .3em;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+    
+    .sbutton{
+      font-size: .9em;
+      margin-top: 1.618em;
+      padding: .3em;
+      background-color: black;
+      color: snow;
+      border-radius: 5px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="search_block">
+    <form action="/search" method="post">
+      <input type="text" name="search" placeholder="Enter a word" class="sinput">
+      <button type="submit" class="sbutton">Search</button>
+    </form>
+  </div>
+  <div class="result_block">
+    <% if (word && definition) { %>
+      <h1>Word: <%= word %></h1>
+      <p>Definition: <%= definition %></p>
+    <% } else if (notFound) { %>
+      <h1>Sorry, word not found.</h1>
+    <% } %>
+  </div>
+
+</body>
+</html>
